@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@CacheDeclaration(cacheName = "HashTableDataStore")
+@CacheDeclaration(cacheName = "HashMapDataStore")
 public class HashTableDataStore implements Cache {
     private Map<Integer, String> dataStore;
 

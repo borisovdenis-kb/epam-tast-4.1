@@ -1,6 +1,7 @@
 package ru.intodayer;
 
 import ru.intodayer.caches.Cache;
+import ru.intodayer.caches.CacheDeclaration;
 import ru.intodayer.caches.InjectCache;
 
 import java.lang.reflect.Field;
@@ -8,19 +9,21 @@ import java.util.*;
 
 
 public class Injector {
-    private ArrayList<Cache> caches;
-    private Map<String, Cache> cacheMap = new HashMap<>();
+    private Map<String, Cache> knownCaches;
 
     public Injector(Cache[] caches) {
-        Collections.addAll(this.caches, caches);
-        initHashMap();
+        knownCaches = initKnownCaches(caches);
     }
 
-    private void initHashMap() {
-        caches
-            .stream().forEach((c) -> {
-                cacheMap.put(c.getClass().getAnnotation(InjectCache.class).cacheName(), c);
-        });
+    private Map<String, Cache> initKnownCaches(Cache[] caches) {
+        ArrayList<Cache> cacheArrayList = new ArrayList<>();
+        Collections.addAll(cacheArrayList, caches);
+
+        Map<String, Cache> map = new HashMap<>();
+        for (Cache c: cacheArrayList)
+            map.put(c.getClass().getAnnotation(CacheDeclaration.class).cacheName(), c);
+
+        return map;
     }
 
     private ArrayList<Field> getCacheFields(Class classObj) {
@@ -36,14 +39,13 @@ public class Injector {
     }
 
     private void setCacheToFields(ArrayList<Field> fields, Object obj) {
-        fields
-            .stream().forEach((f) -> {
-                try {
-                    f.set(obj, cacheMap.get(f.getAnnotation(InjectCache.class).cacheName()));
-                } catch (IllegalAccessException e) {
-                    System.out.println(e.getMessage());
-                }
-        });
+        for (Field f: fields) {
+            try {
+                f.set(obj, knownCaches.get(f.getAnnotation(InjectCache.class).cacheName()));
+            } catch (IllegalAccessException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
     public void inject(Object obj) {

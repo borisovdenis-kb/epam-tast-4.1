@@ -5,6 +5,14 @@ import ru.intodayer.caches.InjectCache;
 
 
 public class Fellow {
-    @InjectCache(cacheName = "HashMapDataStore") Cache exGirlFriendNames;
-    @InjectCache(cacheName = "FragmentedArrayDataStore") Cache myAchievements;
+    private @InjectCache(cacheName = "HashMapDataStore") Cache exGirlFriendNames;
+    private @InjectCache(cacheName = "FragmentedArrayDataStore") Cache achievements;
+
+    public Cache getExGirlFriendNames() {
+        return exGirlFriendNames;
+    }
+
+    public Cache getAchievements() {
+        return achievements;
+    }
 }
