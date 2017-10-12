@@ -2,6 +2,7 @@ package ru.intodayer;
 
 import ru.intodayer.caches.Cache;
 import ru.intodayer.caches.CacheUtility;
+import ru.intodayer.humans.Fellow;
 
 
 public class InjectorWorkDemonstration {

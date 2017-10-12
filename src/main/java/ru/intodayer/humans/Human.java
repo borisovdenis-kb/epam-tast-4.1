@@ -1,4 +1,4 @@
-package ru.intodayer;
+package ru.intodayer.humans;
 
 import ru.intodayer.caches.Cache;
 import ru.intodayer.caches.InjectCache;
