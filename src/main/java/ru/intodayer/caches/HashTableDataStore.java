@@ -1,30 +1,29 @@
 package ru.intodayer.caches;
 
 import ru.intodayer.Cache;
-
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class DataStore implements Cache {
-    private Map<Integer, String> myMap;
+public class HashTableDataStore implements Cache {
+    private Map<Integer, String> dataStore;
 
-    public DataStore() {
-        this.myMap = new HashMap<>();
+    public HashTableDataStore() {
+        this.dataStore = new HashMap<>();
     }
 
     @Override
     public void put(Integer index, String data) {
-        myMap.put(index, data);
+        dataStore.put(index, data);
     }
 
     @Override
     public String get(Integer index) {
-        return myMap.get(index);
+        return dataStore.get(index);
     }
 
     @Override
     public String toString() {
-        return myMap.toString();
+        return dataStore.toString();
     }
 }
