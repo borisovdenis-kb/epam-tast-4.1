@@ -29,6 +29,13 @@ public class FragmentedArrayDataStore implements Cache {
 
     @Override
     public String toString() {
-        return dataStore.toString();
+        StringBuilder sb = new StringBuilder("[");
+        for (int i = 0; i < dataStore.length-1; i++) {
+            sb.append(dataStore[i]);
+            sb.append(", ");
+        }
+        sb.append(dataStore[dataStore.length-1]);
+        sb.append("]");
+        return sb.toString();
     }
 }
