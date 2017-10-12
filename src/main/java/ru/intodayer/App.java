@@ -12,7 +12,7 @@ public class App {
 //        System.out.println(list);
 //        System.out.println(list.get(2));
 
-        MyHashMap map = new MyHashMap();
+        DataStore map = new DataStore();
         map.put(0, "A");
         map.put(1, "B");
         map.put(2, "C");

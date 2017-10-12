@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class MyHashMap implements Cache {
+public class DataStore implements Cache {
     private Map<Integer, String> myMap;
 
-    public MyHashMap() {
+    public DataStore() {
         this.myMap = new HashMap<>();
     }
 
