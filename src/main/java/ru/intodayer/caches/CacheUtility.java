@@ -3,7 +3,7 @@ package ru.intodayer.caches;
 
 public class CacheUtility {
     public static Cache[] createCaches() {
-        Cache hashTableDS = new HashTableDataStore();
+        Cache hashTableDS = new HashMapDataStore();
         hashTableDS.put(0, "Ева Грин");
         hashTableDS.put(1, "Эмма Стоун");
         hashTableDS.put(2, "Галь Гадот");

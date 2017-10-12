@@ -5,10 +5,10 @@ import java.util.Map;
 
 
 @CacheDeclaration(cacheName = "HashMapDataStore")
-public class HashTableDataStore implements Cache {
+public class HashMapDataStore implements Cache {
     private Map<Integer, String> dataStore;
 
-    public HashTableDataStore() {
+    public HashMapDataStore() {
         this.dataStore = new HashMap<>();
     }
 
