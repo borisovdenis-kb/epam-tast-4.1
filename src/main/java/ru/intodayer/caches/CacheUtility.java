@@ -1,7 +1,7 @@
 package ru.intodayer.caches;
 
 
-public class CacheUtills {
+public class CacheUtility {
     public static Cache[] createCache() {
         Cache hashTableDS = new HashTableDataStore();
         hashTableDS.put(0, "Ева Грин");
