@@ -7,7 +7,7 @@ public class MyArrayList implements Cache {
     private ArrayList<String> myArray;
 
     public MyArrayList() {
-        this.myArray = new ArrayList<>();
+        this.myArray = new ArrayList<>(10);
     }
 
     @Override
@@ -18,5 +18,10 @@ public class MyArrayList implements Cache {
     @Override
     public String get(Integer index) {
         return myArray.get(index);
+    }
+
+    @Override
+    public String toString() {
+        return myArray.toString();
     }
 }
