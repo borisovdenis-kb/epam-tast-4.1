@@ -17,10 +17,10 @@ public class InjectorWorkDemonstration {
             "Fellow`s ex-girlfriends:\n" + fellow.getExGirlFriendNames() + "\n"
         );
         System.out.println(
-            "Fellow`s achievements <private field from super>:\n" + fellow.getAchievements() + "\n"
+            "Fellow`s achievements <private field from SUPER>:\n" + fellow.getAchievements() + "\n"
         );
         System.out.println(
-            "Fellow`s brilliant ideas <private field from super.super>:\n" + fellow.getBrilliantIdeas() + "\n"
+            "Fellow`s brilliant ideas <private field from SUPER.SUPER>:\n" + fellow.getBrilliantIdeas() + "\n"
         );
     }
 }
