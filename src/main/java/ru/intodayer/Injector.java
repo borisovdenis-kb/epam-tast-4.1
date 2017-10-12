@@ -26,16 +26,30 @@ public class Injector {
         return map;
     }
 
-    private ArrayList<Field> getCacheFields(Class classObj) {
-        ArrayList<Field> objFields = new ArrayList<>();
-        Collections.addAll(objFields, classObj.getDeclaredFields());
+    private ArrayList<Field> getSuperFields(Class classObj, ArrayList<Field> fields) {
+        Class superClass = classObj.getSuperclass();
+        if(superClass != null){
+            getSuperFields(superClass, fields);
+        }
+        Collections.addAll(fields, classObj.getDeclaredFields());
+        return fields;
+    }
 
-        objFields
+    private ArrayList<Field> getAllFields(Class classObj) {
+        ArrayList<Field> allFields = new ArrayList<>();
+        Collections.addAll(allFields, classObj.getDeclaredFields());
+        allFields.addAll(getSuperFields(classObj, new ArrayList<>()));
+
+        return allFields;
+    }
+
+    private ArrayList<Field> filterCacheFields(ArrayList<Field> allFields) {
+        allFields
             .stream()
             .filter((f) -> f.getAnnotation(InjectCache.class) != null)
             .forEach((f) -> f.setAccessible(true));
 
-        return objFields;
+        return allFields;
     }
 
     private void setCacheToFields(ArrayList<Field> fields, Object obj) {
@@ -50,7 +64,8 @@ public class Injector {
 
     public void inject(Object obj) {
         Class classObj = obj.getClass();
-        ArrayList<Field> cacheFields = getCacheFields(classObj);
+        ArrayList<Field> allFields = getAllFields(classObj);
+        ArrayList<Field> cacheFields = filterCacheFields(allFields);
 
         setCacheToFields(cacheFields, obj);
     }
