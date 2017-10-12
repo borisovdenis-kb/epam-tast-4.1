@@ -1,6 +1,9 @@
 package ru.intodayer.caches;
 
+import ru.intodayer.CacheDeclaration;
 
+
+@CacheDeclaration(cacheName = "FragmentedArrayDataStore")
 public class FragmentedArrayDataStore implements Cache {
     private String[] dataStore;
 
@@ -9,7 +12,7 @@ public class FragmentedArrayDataStore implements Cache {
     }
 
     private void checkRange(Integer index){
-        if (index >= dataStore.length - 1 || index < 0)
+        if (index >= dataStore.length || index < 0)
             throw new IndexOutOfBoundsException();
     }
 
