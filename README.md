@@ -1,1 +1,2 @@
-# epam-tast-4.1
+# Reflection task
+#### Author: Borisov Denis
