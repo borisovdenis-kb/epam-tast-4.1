@@ -1,4 +1,4 @@
-package ru.intodayer;
+package ru.intodayer.caches;
 
 
 public interface Cache {

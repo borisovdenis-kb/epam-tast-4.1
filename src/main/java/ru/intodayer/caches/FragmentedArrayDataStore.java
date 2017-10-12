@@ -1,7 +1,5 @@
 package ru.intodayer.caches;
 
-import ru.intodayer.Cache;
-
 
 public class FragmentedArrayDataStore implements Cache {
     private String[] dataStore;
