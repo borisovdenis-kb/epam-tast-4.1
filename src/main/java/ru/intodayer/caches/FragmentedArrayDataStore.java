@@ -9,20 +9,13 @@ public class FragmentedArrayDataStore implements Cache {
         this.dataStore = new String[size];
     }
 
-    private void checkRange(Integer index){
-        if (index >= dataStore.length || index < 0)
-            throw new IndexOutOfBoundsException();
-    }
-
     @Override
     public void put(Integer index, String data) {
-        checkRange(index);
         dataStore[index] = data;
     }
 
     @Override
     public String get(Integer index) {
-        checkRange(index);
         return dataStore[index];
     }
 
