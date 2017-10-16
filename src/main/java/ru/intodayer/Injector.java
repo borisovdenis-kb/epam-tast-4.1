@@ -25,20 +25,15 @@ public class Injector {
         return map;
     }
 
-    private List<Field> getSuperFields(Class classObj, List<Field> fields) {
-        Class superClass = classObj.getSuperclass();
-        if(superClass != null){
-            getSuperFields(superClass, fields);
-        }
-        Collections.addAll(fields, classObj.getDeclaredFields());
-        return fields;
-    }
-
     private List<Field> getAllFields(Class classObj) {
         List<Field> allFields = new ArrayList<>();
         Collections.addAll(allFields, classObj.getDeclaredFields());
-        allFields.addAll(getSuperFields(classObj, new ArrayList<>()));
 
+        Class superClass = classObj.getSuperclass();
+        while (superClass != Object.class) {
+            Collections.addAll(allFields, superClass.getDeclaredFields());
+            superClass = superClass.getSuperclass();
+        }
         return allFields;
     }
 
