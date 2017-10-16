@@ -46,21 +46,17 @@ public class Injector {
         return allFields;
     }
 
-    private void setCacheToFields(List<Field> fields, Object obj) {
+    private void setCacheToFields(List<Field> fields, Object obj) throws IllegalAccessException {
         for (Field f: fields) {
-            try {
-                f.set(obj, knownCaches.get(f.getAnnotation(InjectCache.class).cacheName()));
-            } catch (IllegalAccessException e) {
-                System.out.println(e.getMessage());
-            }
+            f.set(obj, knownCaches.get(f.getAnnotation(InjectCache.class).cacheName()));
         }
     }
 
-    public void inject(Object obj) {
+    public void inject(Object obj) throws IllegalAccessException {
         Class classObj = obj.getClass();
         List<Field> allFields = getAllFields(classObj);
-        List<Field> cacheFields = filterCacheFields(allFields);
+        List<Field> injectableFields = filterCacheFields(allFields);
 
-        setCacheToFields(cacheFields, obj);
+        setCacheToFields(injectableFields, obj);
     }
 }

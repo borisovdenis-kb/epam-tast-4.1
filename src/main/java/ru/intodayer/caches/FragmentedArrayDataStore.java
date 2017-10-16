@@ -1,8 +1,9 @@
 package ru.intodayer.caches;
 
 
-@CacheDeclaration(cacheName = "FragmentedArrayDataStore")
+@CacheDeclaration(cacheName = FragmentedArrayDataStore.cacheName)
 public class FragmentedArrayDataStore implements Cache {
+    public static final String cacheName = "FragmentedArrayDataStore";
     private String[] dataStore;
 
     public FragmentedArrayDataStore(int size) {
