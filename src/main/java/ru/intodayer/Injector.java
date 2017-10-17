@@ -1,8 +1,8 @@
 package ru.intodayer;
 
-import ru.intodayer.caches.Cache;
-import ru.intodayer.caches.CacheDeclaration;
-import ru.intodayer.caches.InjectCache;
+import ru.intodayer.cacheutility.Cache;
+import ru.intodayer.cacheutility.CacheDeclaration;
+import ru.intodayer.cacheutility.InjectCache;
 import java.lang.reflect.Field;
 import java.util.*;
 

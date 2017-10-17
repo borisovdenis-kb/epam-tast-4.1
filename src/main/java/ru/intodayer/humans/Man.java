@@ -1,8 +1,8 @@
 package ru.intodayer.humans;
 
-import ru.intodayer.caches.Cache;
-import ru.intodayer.caches.FragmentedArrayDataStore;
-import ru.intodayer.caches.InjectCache;
+import ru.intodayer.cacheutility.Cache;
+import ru.intodayer.cacheutility.FragmentedArrayDataStore;
+import ru.intodayer.cacheutility.InjectCache;
 
 
 public class Man  extends Human {

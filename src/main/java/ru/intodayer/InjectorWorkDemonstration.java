@@ -1,7 +1,7 @@
 package ru.intodayer;
 
-import ru.intodayer.caches.Cache;
-import ru.intodayer.caches.CacheUtility;
+import ru.intodayer.cacheutility.Cache;
+import ru.intodayer.cacheutility.CacheUtility;
 import ru.intodayer.humans.Fellow;
 
 

@@ -1,8 +1,8 @@
 package ru.intodayer.humans;
 
-import ru.intodayer.caches.Cache;
-import ru.intodayer.caches.HashMapDataStore;
-import ru.intodayer.caches.InjectCache;
+import ru.intodayer.cacheutility.Cache;
+import ru.intodayer.cacheutility.HashMapDataStore;
+import ru.intodayer.cacheutility.InjectCache;
 
 
 public class Human {

@@ -1,4 +1,4 @@
-package ru.intodayer.caches;
+package ru.intodayer.cacheutility;
 
 import java.util.HashMap;
 import java.util.Map;

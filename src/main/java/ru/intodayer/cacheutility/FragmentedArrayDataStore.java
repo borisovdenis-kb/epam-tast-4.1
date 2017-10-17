@@ -1,4 +1,4 @@
-package ru.intodayer.caches;
+package ru.intodayer.cacheutility;
 
 
 @CacheDeclaration(cacheName = FragmentedArrayDataStore.cacheName)
