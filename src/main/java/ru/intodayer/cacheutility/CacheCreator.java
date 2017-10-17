@@ -54,10 +54,10 @@ public class CacheCreator {
         return classes;
     }
 
-    public static Cache[] createCaches()
+    public static Cache[] createCaches(String packageName)
             throws ClassNotFoundException, IOException, IllegalAccessException,
                    InstantiationException, NoSuchMethodException {
-        Class[] cachesClasses = getClasses("ru.intodayer.cacheutility.caches"); // TODO: C этим надо что-то делать!
+        Class[] cachesClasses = getClasses(packageName);
 
         List<Cache> caches = new ArrayList<>();
         for (Class classObj: cachesClasses) {

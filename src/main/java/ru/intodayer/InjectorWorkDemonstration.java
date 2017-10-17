@@ -12,7 +12,7 @@ public class InjectorWorkDemonstration {
             throws IllegalAccessException, ClassNotFoundException, NoSuchMethodException,
                    InstantiationException, IOException {
         Fellow fellow = new Fellow();
-        Cache[] caches = CacheCreator.createCaches();
+        Cache[] caches = CacheCreator.createCaches("ru.intodayer.cacheutility.caches");
         Injector injector = new Injector(caches);
 
         injector.inject(fellow);
