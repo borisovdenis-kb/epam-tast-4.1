@@ -1,7 +1,7 @@
 package ru.intodayer.humans;
 
 import ru.intodayer.cacheutility.Cache;
-import ru.intodayer.cacheutility.FragmentedArrayDataStore;
+import ru.intodayer.cacheutility.caches.FragmentedArrayDataStore;
 import ru.intodayer.cacheutility.InjectCache;
 
 

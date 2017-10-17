@@ -1,6 +1,9 @@
 package ru.intodayer.cacheutility;
 
 
+import ru.intodayer.cacheutility.caches.FragmentedArrayDataStore;
+import ru.intodayer.cacheutility.caches.HashMapDataStore;
+
 public class CacheUtility {
     public static Cache[] createCaches() {
         Cache hashTableDS = new HashMapDataStore();

@@ -1,5 +1,8 @@
-package ru.intodayer.cacheutility;
+package ru.intodayer.cacheutility.caches;
 
+
+import ru.intodayer.cacheutility.Cache;
+import ru.intodayer.cacheutility.CacheDeclaration;
 
 @CacheDeclaration(cacheName = FragmentedArrayDataStore.cacheName)
 public class FragmentedArrayDataStore implements Cache {

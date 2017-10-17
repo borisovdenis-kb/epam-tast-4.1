@@ -1,4 +1,7 @@
-package ru.intodayer.cacheutility;
+package ru.intodayer.cacheutility.caches;
+
+import ru.intodayer.cacheutility.Cache;
+import ru.intodayer.cacheutility.CacheDeclaration;
 
 import java.util.HashMap;
 import java.util.Map;

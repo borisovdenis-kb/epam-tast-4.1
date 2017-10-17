@@ -1,7 +1,7 @@
 package ru.intodayer.humans;
 
 import ru.intodayer.cacheutility.Cache;
-import ru.intodayer.cacheutility.HashMapDataStore;
+import ru.intodayer.cacheutility.caches.HashMapDataStore;
 import ru.intodayer.cacheutility.InjectCache;
 
 
