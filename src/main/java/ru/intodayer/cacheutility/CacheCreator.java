@@ -1,10 +1,10 @@
 package ru.intodayer.cacheutility;
 
-
 import ru.intodayer.cacheutility.caches.FragmentedArrayDataStore;
 import ru.intodayer.cacheutility.caches.HashMapDataStore;
 
-public class CacheUtility {
+
+public class CacheCreator {
     public static Cache[] createCaches() {
         Cache hashTableDS = new HashMapDataStore();
         hashTableDS.put(0, "Ева Грин");

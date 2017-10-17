@@ -1,14 +1,14 @@
 package ru.intodayer;
 
 import ru.intodayer.cacheutility.Cache;
-import ru.intodayer.cacheutility.CacheUtility;
+import ru.intodayer.cacheutility.CacheCreator;
 import ru.intodayer.humans.Fellow;
 
 
 public class InjectorWorkDemonstration {
     public static void demonstrateInjectorWork() throws IllegalAccessException {
         Fellow fellow = new Fellow();
-        Cache[] caches = CacheUtility.createCaches();
+        Cache[] caches = CacheCreator.createCaches();
         Injector injector = new Injector(caches);
 
         injector.inject(fellow);
