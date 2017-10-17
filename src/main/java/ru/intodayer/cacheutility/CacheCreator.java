@@ -1,21 +1,77 @@
 package ru.intodayer.cacheutility;
 
-import ru.intodayer.cacheutility.caches.FragmentedArrayDataStore;
-import ru.intodayer.cacheutility.caches.HashMapDataStore;
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 
 
 public class CacheCreator {
-    public static Cache[] createCaches() {
-        Cache hashTableDS = new HashMapDataStore();
-        hashTableDS.put(0, "Ева Грин");
-        hashTableDS.put(1, "Эмма Стоун");
-        hashTableDS.put(2, "Галь Гадот");
+    private static Class[] getClasses(String packageName) throws ClassNotFoundException, IOException {
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
 
-        Cache fragmentArray = new FragmentedArrayDataStore(3);
-        fragmentArray.put(0, "Кубок региона по жанглированию.");
-        fragmentArray.put(1, "Победа в реп баттле.");
-        fragmentArray.put(2, "Заплыв до того берега Волги и обратно.");
+        String path = packageName.replace('.', '/');
+        Enumeration<URL> resources = classLoader.getResources(path);
 
-        return new Cache[]{hashTableDS, fragmentArray};
+        List<File> dirs = new ArrayList<>();
+        while (resources.hasMoreElements()) {
+            URL url = resources.nextElement();
+            dirs.add(new File(url.getFile()));
+        }
+
+        List<Class> classes = new ArrayList<>();
+        for (File directory : dirs) {
+            classes.addAll(getAllClasses(directory, packageName));
+        }
+        return classes.toArray(new Class[classes.size()]);
+    }
+
+    private static String removeExtension(String s) {
+        return s.split("\\.")[0];
+    }
+
+    private static List<Class> getAllClasses(File directory, String packageName) throws ClassNotFoundException {
+        List<Class> classes = new ArrayList<>();
+        if (!directory.exists()) {
+            return classes;
+        }
+
+        File[] files = directory.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                classes.addAll(
+                    getAllClasses(file, packageName + "." + file.getName())
+                );
+            } else if (file.getName().endsWith(".class")) {
+                classes.add(
+                    Class.forName(packageName + '.' + removeExtension(file.getName()))
+                );
+            }
+        }
+        return classes;
+    }
+
+    public static Cache[] createCaches()
+            throws ClassNotFoundException, IOException, IllegalAccessException,
+                   InstantiationException, NoSuchMethodException {
+        Class[] cachesClasses = getClasses("ru.intodayer.cacheutility.caches"); // TODO: C этим надо что-то делать!
+
+        List<Cache> caches = new ArrayList<>();
+        for (Class classObj: cachesClasses) {
+            try {
+                Constructor constructor = classObj.getConstructor();
+            } catch (NoSuchMethodException e) {
+                String message = "Please make cache " + classObj.getName() + " workable with default constructor.";
+                throw new NoSuchMethodError(message);
+            }
+            Cache cache = (Cache) classObj.newInstance();
+            DataCreator.fillWithRandomStringData(cache);
+            caches.add(cache);
+        }
+        Cache[] result = new Cache[caches.size()];
+        return caches.toArray(result);
     }
 }

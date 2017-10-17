@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-@CacheDeclaration(cacheName = HashMapDataStore.cacheName)
+@CacheDeclaration(cacheName = HashMapDataStore.CACHE_NAME)
 public class HashMapDataStore implements Cache {
-    public static final String cacheName = "HashMapDataStore";
+    public static final String CACHE_NAME = "HashMapDataStore";
     private Map<Integer, String> dataStore;
 
     public HashMapDataStore() {

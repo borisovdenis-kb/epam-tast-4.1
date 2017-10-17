@@ -4,9 +4,13 @@ import ru.intodayer.cacheutility.Cache;
 import ru.intodayer.cacheutility.CacheCreator;
 import ru.intodayer.humans.Fellow;
 
+import java.io.IOException;
+
 
 public class InjectorWorkDemonstration {
-    public static void demonstrateInjectorWork() throws IllegalAccessException {
+    public static void demonstrateInjectorWork()
+            throws IllegalAccessException, ClassNotFoundException, NoSuchMethodException,
+                   InstantiationException, IOException {
         Fellow fellow = new Fellow();
         Cache[] caches = CacheCreator.createCaches();
         Injector injector = new Injector(caches);

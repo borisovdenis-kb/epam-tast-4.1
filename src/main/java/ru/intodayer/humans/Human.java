@@ -6,7 +6,7 @@ import ru.intodayer.cacheutility.InjectCache;
 
 
 public class Human {
-    private @InjectCache(cacheName = HashMapDataStore.cacheName) Cache brilliantIdeas;
+    private @InjectCache(cacheName = HashMapDataStore.CACHE_NAME) Cache brilliantIdeas;
 
     public Cache getBrilliantIdeas() {
         return brilliantIdeas;

@@ -6,7 +6,7 @@ import ru.intodayer.cacheutility.InjectCache;
 
 
 public class Man  extends Human {
-    private @InjectCache(cacheName = FragmentedArrayDataStore.cacheName) Cache achievements;
+    private @InjectCache(cacheName = FragmentedArrayDataStore.CACHE_NAME) Cache achievements;
 
     public Cache getAchievements() {
         return achievements;

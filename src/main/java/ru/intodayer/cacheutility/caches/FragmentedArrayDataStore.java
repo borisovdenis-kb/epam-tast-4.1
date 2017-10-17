@@ -1,17 +1,14 @@
 package ru.intodayer.cacheutility.caches;
 
-
 import ru.intodayer.cacheutility.Cache;
 import ru.intodayer.cacheutility.CacheDeclaration;
 
-@CacheDeclaration(cacheName = FragmentedArrayDataStore.cacheName)
-public class FragmentedArrayDataStore implements Cache {
-    public static final String cacheName = "FragmentedArrayDataStore";
-    private String[] dataStore;
 
-    public FragmentedArrayDataStore(int size) {
-        this.dataStore = new String[size];
-    }
+@CacheDeclaration(cacheName = FragmentedArrayDataStore.CACHE_NAME)
+public class FragmentedArrayDataStore implements Cache {
+    public static final String CACHE_NAME = "FragmentedArrayDataStore";
+    private final int size = 10;
+    private String[] dataStore = new String[size];
 
     @Override
     public void put(Integer index, String data) {

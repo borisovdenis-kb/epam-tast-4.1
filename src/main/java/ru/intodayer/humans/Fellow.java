@@ -6,7 +6,7 @@ import ru.intodayer.cacheutility.InjectCache;
 
 
 public class Fellow extends Man {
-    private @InjectCache(cacheName = HashMapDataStore.cacheName) Cache exGirlFriendNames;
+    private @InjectCache(cacheName = HashMapDataStore.CACHE_NAME) Cache exGirlFriendNames;
 
     public Cache getExGirlFriendNames() {
         return exGirlFriendNames;
